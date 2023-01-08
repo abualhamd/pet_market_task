@@ -27,13 +27,27 @@ class PetCard extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               horizontal: width * ValuesManger.s0_05,
               vertical: width * ValuesManger.s0_04),
-          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child: Row(children: [
             // TODO add a default image
             Image.network(
               HelperFunctions.getValidGDriveLink(pet.img),
               fit: BoxFit.cover,
-              width: width * .3,
-              height: width * .25,
+              width: width * ValuesManger.s0_3,
+              height: width * ValuesManger.s0_25,
+              errorBuilder: (context, error, stackTrace) => Center(
+                child: Container(
+                  color: Colors.red,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        // horizontal: width * ValuesManger.s0_01,
+                        vertical: width * ValuesManger.s0_01),
+                    child: const Text(
+                      AppStrings.someThingWentWrong,
+                      style: TextStyle(fontSize: FontSizeManger.f13),
+                    ),
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               width: width * ValuesManger.s0_05,
